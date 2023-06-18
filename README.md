@@ -91,3 +91,19 @@ const sourcemaps = require('gulp-sourcemaps');
 colocar antes do .pipe(sass
 .pipe(sourcemaps.init())
 )
+
+_________________________________________________________________
+Para o Gulp ficar rodando sem ficar dando o comando npm run gul sass
+Fazemos:
+
+Colocamos uma tarefa gulp Watch
+
+    //esse código vai fazer com que sempre que houver uma alteração no doc ele atualize automaticamente.
+exports.watch = function() {
+    gulp.watch('./source/styles/*.scss', gulp.series(compilaSass));
+}
+
+
+em seguida rodar o comando:
+
+npm run gulp watch
