@@ -11,8 +11,16 @@ const sass = require('gulp-sass')(require('sass'));
 //Usando o * estamos selecionando todos os arquivos SASS >> SCSS << '.source/style/*.scss'.
 //pipe -- Vai encadear as funções, sem ele não poderiamos chamar outra função depois do gulp.src
 function compilaSass() {
-    return gulp.src('./source/styles/*.scss')
-        .pipe(sass())
+   // return gulp.src('./source/styles/*.scss')
+   // nesse caso não é necessário compilar tododos os arquivos então colocaremos apenas o Gulp.
+    return gulp.src('./source/styles/main.scss')
+        .pipe(sourcemaps.init())
+
+        //Vamos dizer que o Gulp além de compilar ele precisa MINIFICAR o arq.
+        // DESSE :.pipe(sass()) PASSA PARA:
+        .pipe(sass({
+            outputStyle: 'compressed' //esse código vai remover toda quebra de linha.
+        }))
         //Essa função irá mandar toda a compilação para os destino final.
         .pipe(gulp.dest('./build/styles'));
     }

@@ -39,8 +39,10 @@ Exportar os pacotes Gulp
 const gulp = require('gulp');
 
 
-_______________________________________________________//_______________________________________________________________
-____________________________________________PROCESSAR SASS EM CSS PELO GULP_____________________________________________
+___________________//______________
+_____PROCESSAR SASS EM CSS PELO GULP_________________________
+
+
 Instalação de Plu-gins Node js...
 
 npm install --save-dev gulp-sass
@@ -78,3 +80,14 @@ Passe o comando
 npm run gulp sass
 *** os arquivos aparecem compilados na pasta build.
 
+________Instalação do SOURCEMAPS para tratar erros de SASS__________
+
+npm install --save-dev gulp-sourcemaps
+
+Para usar esse pacote vamos importar o pacote no arq Gulp
+
+const sourcemaps = require('gulp-sourcemaps');
+
+colocar antes do .pipe(sass
+.pipe(sourcemaps.init())
+)
