@@ -186,3 +186,5 @@ Daremos o comando
     npm install 
 
 E algumas pastas do projeto serão incluidas
+
+_____________________________________________________________________________________
