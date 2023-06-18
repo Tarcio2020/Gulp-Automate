@@ -6,7 +6,25 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
+const uglify = require('gulp-uglify');
+const obfuscate = require('gulp-obfuscate');
+const imagemin = require('gulp-imagemin');
 
+
+function comprimeImagen() {
+    return gulp.src('./source/images/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('./build/images'))
+}
+
+//Função para MINIMIZAR o JS.
+function comprimeJs() {
+    return gulp.src('./source/scripts/*.js')
+    .pipe(uglify())
+    .pipe(obfuscate())
+    .pipe(gulp.dest('./build/scripts'))
+
+}
 
 
 //Função para compilar todos arquivos sass em css
@@ -69,11 +87,13 @@ exports.dizTchau = dizTchau;
 //^^^^^^^^^^Observar a sequência de cima^^^^^^^^^^
 exports.sass = compilaSass;
 
-
 exports.watch = function() {
     gulp.watch('./source/styles/*.scss', { ignoredInitial: false }, gulp.series(compilaSass));
 }
 
+exports.javascript = comprimeJs;
+
+exports.imagemin = comprimeImagen;
 
 
 
